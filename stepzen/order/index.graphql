@@ -1,0 +1,33 @@
+type Order {
+  carrier: String
+  createdAt: Date
+  shippingCost: Int
+  trackingId: String
+  Address: String
+  City: String
+  Lat: Float
+  Lng: Float
+  #Tracking Items
+  trackingItems: TrackingItems
+    @materializer(
+      query: "getTrackingItemsById"
+      arguments: [{ name: "id", field: "trackingId" }] #Praticamente prende il tracking id che recupera e grazie alla funzione nell'altra API recupera le info
+    )
+}
+
+type OrderList {
+  name: ID
+  value: Order
+}
+
+type Query {
+  getOrderById(id: ID): Order
+    @rest(
+      endpoint: "https://ups-rn-bb122-default-rtdb.europe-west1.firebasedatabase.app/orders/$id.json"
+    )
+  getOrders: [OrderList]
+    @rest(
+      endpoint: "https://ups-rn-bb122-default-rtdb.europe-west1.firebasedatabase.app/orders.json"
+      transforms: [{ pathpattern: [], editor: "objectToArray" }]
+    )
+}
