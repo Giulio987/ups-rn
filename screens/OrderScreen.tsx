@@ -5,6 +5,8 @@ import {
   OrderScreenRouteProp,
   OrdersScreenNavigationProp,
 } from '../types/navigation';
+import colors from '../constants/colors';
+import DeliveryCard from '../components/DeliveryCard';
 
 const OrderScreen = () => {
   const navigation = useNavigation<OrdersScreenNavigationProp>();
@@ -17,9 +19,19 @@ const OrderScreen = () => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: order.trackingItems.customer.name,
+      headerBackTitle: 'Deliveries',
+      headerTintColor: colors.primaryOrders,
+      headerTitleStyle: {
+        color: 'black',
+      },
     });
-  }, []);
-  return <View className="-mt-2"></View>;
+  }, [order]);
+
+  return (
+    <View className="-mt-2">
+      <DeliveryCard order={order} fullWidth />
+    </View>
+  );
 };
 
 export default OrderScreen;
