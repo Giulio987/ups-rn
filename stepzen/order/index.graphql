@@ -10,7 +10,7 @@ type Order {
   #Tracking Items
   trackingItems: TrackingItems
     @materializer(
-      query: "getTrackingItemsById"
+      query: "getTrackingItemById"
       arguments: [{ name: "id", field: "trackingId" }] #Praticamente prende il tracking id che recupera e grazie alla funzione nell'altra API recupera le info
     )
 }
