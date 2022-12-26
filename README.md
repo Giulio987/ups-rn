@@ -1,6 +1,6 @@
 # ups-rn
 
-Un'applicazione che simula i processi essenziali per la famosa UPS.
+Un'applicazione che simula i processi essenziali per la famosa UPS. (Sviluppata unicamente a scopo di apprendimento, i dati non sono veritieri)
 Database: Firebase
 API: Stepzen & GraphQL
 
