@@ -28,7 +28,7 @@ const CustomersScreen = () => {
     >
       <Image source={upsCustomer} className="h-64 w-full" />
       <Input
-        placeholder="Cerca per cliente"
+        placeholder="Search by client"
         value={input}
         onChangeText={setInput}
         containerStyle={{
